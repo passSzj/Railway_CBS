@@ -1,0 +1,21 @@
+# ninja log v5
+71	14995	7683315731499395	CMakeFiles/RailwayCBS.dir/task.cpp.obj	b4de7e47d01147ca
+22	11173	7683315945639258	CMakeFiles/RailwayCBS.dir/main.cpp.obj	bc429bae59d3b21f
+21	15548	7683315737179805	CMakeFiles/RailwayCBS.dir/map.cpp.obj	fa5b8b069c9bbe0e
+99	15747	7683315739156489	CMakeFiles/RailwayCBS.dir/heuristic.cpp.obj	c63cdcec1960fedb
+12	15697	7683315738896082	CMakeFiles/RailwayCBS.dir/lowLevel.cpp.obj	bd2e650f6e8b9a0a
+15001	19668	7683315778469435	CMakeFiles/tinyxml2.dir/tinyxml2.cpp.obj	74c0b2ecb7cd4408
+109	16511	7683315746798325	CMakeFiles/RailwayCBS.dir/highLevel.cpp.obj	b373f9d25144f9f3
+19668	20216	7683315783389072	libtinyxml2.a	1699106fa5f21d99
+11174	12646	7683315957749424	RailwayCBS.exe	f94b6906543d50e
+0	405	7683316611389106	build.ninja	f5ce4600e5d4e078
+0	1610	7683316611389106	build.ninja	f5ce4600e5d4e078
+48	4214	7683316655032020	CMakeFiles/RailwayCBS.dir/task.cpp.obj	d6297580f8466858
+24	4539	7683316658328940	CMakeFiles/RailwayCBS.dir/main.cpp.obj	f378fd89da0c7e0e
+40	4684	7683316659367198	CMakeFiles/RailwayCBS.dir/map.cpp.obj	f9349a52c8f267f5
+9	5044	7683316663646271	CMakeFiles/tinyxml2.dir/tinyxml2.cpp.obj	c9774265a4c9d923
+17	5090	7683316664125134	CMakeFiles/RailwayCBS.dir/heuristic.cpp.obj	6fc419ef5daf773d
+5045	5228	7683316665512976	libtinyxml2.a	1699106fa5f21d99
+33	5661	7683316669849501	CMakeFiles/RailwayCBS.dir/highLevel.cpp.obj	eebbe3b33fe03b0
+4214	6546	7683316678635780	CMakeFiles/RailwayCBS.dir/lowLevel.cpp.obj	4675cc0aae39bedc
+6546	6767	7683316680860128	RailwayCBS.exe	d2b863c754b0c8e8
