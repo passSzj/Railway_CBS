@@ -12,7 +12,6 @@ int main() {
     task.getTask("../AgentData/Task4_10Agent.xml");
     task.getXY(map);
 
-
     CBS cbs;
     Solution res=cbs.findSolution(map,task);
 
@@ -22,7 +21,6 @@ int main() {
     }
 
     std::cout<<res.initCost;
-
 
     return 0;
 }
