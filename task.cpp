@@ -39,7 +39,7 @@ bool Task::getTask(const char* FileName){
 
 
 void Task::getXY(Map &map){
-    for(int i=0;i<agents.size();i++){
+    for(size_t i=0;i<agents.size();i++){
         subVertex start=map.getSubVertex(agents[i].start_id,agents[i].s_index);
         subVertex goal=map.getSubVertex(agents[i].goal_id,agents[i].g_index);
         agents[i].start_x=start.x;

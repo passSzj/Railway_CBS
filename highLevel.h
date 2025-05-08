@@ -55,7 +55,7 @@ public:
 
             if(time1>time2){
                 if(time1>conflict->timeStep){
-                    for(int index=0;index<this->paths[k].nodes.size();index++){
+                    for(size_t index=0;index<this->paths[k].nodes.size();index++){
                         if(this->paths[j].nodes[time1]==this->paths[k].nodes[index]){
                             time2=index;
                             time1= getNextTime(time1,this->paths[j].nodes);
@@ -68,7 +68,7 @@ public:
             }else{
                 if(time2>conflict->timeStep){
                     time2++;
-                    for(int index=0;index<this->paths[j].nodes.size();index++){
+                    for(size_t index=0;index<this->paths[j].nodes.size();index++){
                         if(this->paths[k].nodes[time2-1]==this->paths[j].nodes[index]){
                             time1=index;
                             break;
@@ -90,7 +90,7 @@ public:
     int getConstraintTime(int conflictTime,solutionPath* s1,Map* map){
         int time=conflictTime;
         int i=conflictTime;
-        int i2=conflictTime;
+        size_t i2=conflictTime;
         while(i>=0){
             if(map->getValidMoveSize(s1->nodes[i].index,s1->nodes[i].id)<=1){
                 i--;
@@ -117,7 +117,7 @@ public:
 
 
     int getNextTime(int time, std::vector<solutionNode> nodes){
-        for(int i=time;i<nodes.size();i++){
+        for(size_t i=time;i<nodes.size();i++){
             if(nodes[i].id!=nodes[time].id){
                 return i;
             }
@@ -127,7 +127,7 @@ public:
 
     void addConstraints(const std::vector<Constraint*> oldConstraintList,Constraint* newConstraint){
         constraint.clear();
-        for(int i=0;i<oldConstraintList.size();i++){
+        for(size_t i=0;i<oldConstraintList.size();i++){
             constraint.push_back(new Constraint(oldConstraintList[i]->agent,oldConstraintList[i]->node,oldConstraintList[i]->time));
         }
         constraint.push_back(newConstraint);

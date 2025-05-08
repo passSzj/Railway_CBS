@@ -51,42 +51,42 @@ build cmake_object_order_depends_target_RailwayCBS: phony || cmake_object_order_
 
 build CMakeFiles/RailwayCBS.dir/main.cpp.obj: CXX_COMPILER__RailwayCBS_Release C$:/Users/y4624/Desktop/clone/RailwayCBS/main.cpp || cmake_object_order_depends_target_RailwayCBS
   DEP_FILE = CMakeFiles\RailwayCBS.dir\main.cpp.obj.d
-  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++11
+  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -O0 -fdiagnostics-color=always -std=gnu++11
   INCLUDES = -IC:/Boost/boost_1_86_0 -IC:/Users/y4624/Desktop/clone/RailwayCBS/.
   OBJECT_DIR = CMakeFiles\RailwayCBS.dir
   OBJECT_FILE_DIR = CMakeFiles\RailwayCBS.dir
 
 build CMakeFiles/RailwayCBS.dir/map.cpp.obj: CXX_COMPILER__RailwayCBS_Release C$:/Users/y4624/Desktop/clone/RailwayCBS/map.cpp || cmake_object_order_depends_target_RailwayCBS
   DEP_FILE = CMakeFiles\RailwayCBS.dir\map.cpp.obj.d
-  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++11
+  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -O0 -fdiagnostics-color=always -std=gnu++11
   INCLUDES = -IC:/Boost/boost_1_86_0 -IC:/Users/y4624/Desktop/clone/RailwayCBS/.
   OBJECT_DIR = CMakeFiles\RailwayCBS.dir
   OBJECT_FILE_DIR = CMakeFiles\RailwayCBS.dir
 
 build CMakeFiles/RailwayCBS.dir/task.cpp.obj: CXX_COMPILER__RailwayCBS_Release C$:/Users/y4624/Desktop/clone/RailwayCBS/task.cpp || cmake_object_order_depends_target_RailwayCBS
   DEP_FILE = CMakeFiles\RailwayCBS.dir\task.cpp.obj.d
-  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++11
+  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -O0 -fdiagnostics-color=always -std=gnu++11
   INCLUDES = -IC:/Boost/boost_1_86_0 -IC:/Users/y4624/Desktop/clone/RailwayCBS/.
   OBJECT_DIR = CMakeFiles\RailwayCBS.dir
   OBJECT_FILE_DIR = CMakeFiles\RailwayCBS.dir
 
 build CMakeFiles/RailwayCBS.dir/lowLevel.cpp.obj: CXX_COMPILER__RailwayCBS_Release C$:/Users/y4624/Desktop/clone/RailwayCBS/lowLevel.cpp || cmake_object_order_depends_target_RailwayCBS
   DEP_FILE = CMakeFiles\RailwayCBS.dir\lowLevel.cpp.obj.d
-  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++11
+  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -O0 -fdiagnostics-color=always -std=gnu++11
   INCLUDES = -IC:/Boost/boost_1_86_0 -IC:/Users/y4624/Desktop/clone/RailwayCBS/.
   OBJECT_DIR = CMakeFiles\RailwayCBS.dir
   OBJECT_FILE_DIR = CMakeFiles\RailwayCBS.dir
 
 build CMakeFiles/RailwayCBS.dir/heuristic.cpp.obj: CXX_COMPILER__RailwayCBS_Release C$:/Users/y4624/Desktop/clone/RailwayCBS/heuristic.cpp || cmake_object_order_depends_target_RailwayCBS
   DEP_FILE = CMakeFiles\RailwayCBS.dir\heuristic.cpp.obj.d
-  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++11
+  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -O0 -fdiagnostics-color=always -std=gnu++11
   INCLUDES = -IC:/Boost/boost_1_86_0 -IC:/Users/y4624/Desktop/clone/RailwayCBS/.
   OBJECT_DIR = CMakeFiles\RailwayCBS.dir
   OBJECT_FILE_DIR = CMakeFiles\RailwayCBS.dir
 
 build CMakeFiles/RailwayCBS.dir/highLevel.cpp.obj: CXX_COMPILER__RailwayCBS_Release C$:/Users/y4624/Desktop/clone/RailwayCBS/highLevel.cpp || cmake_object_order_depends_target_RailwayCBS
   DEP_FILE = CMakeFiles\RailwayCBS.dir\highLevel.cpp.obj.d
-  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++11
+  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -O0 -fdiagnostics-color=always -std=gnu++11
   INCLUDES = -IC:/Boost/boost_1_86_0 -IC:/Users/y4624/Desktop/clone/RailwayCBS/.
   OBJECT_DIR = CMakeFiles\RailwayCBS.dir
   OBJECT_FILE_DIR = CMakeFiles\RailwayCBS.dir
@@ -100,7 +100,7 @@ build CMakeFiles/RailwayCBS.dir/highLevel.cpp.obj: CXX_COMPILER__RailwayCBS_Rele
 # Link the executable RailwayCBS.exe
 
 build RailwayCBS.exe: CXX_EXECUTABLE_LINKER__RailwayCBS_Release CMakeFiles/RailwayCBS.dir/main.cpp.obj CMakeFiles/RailwayCBS.dir/map.cpp.obj CMakeFiles/RailwayCBS.dir/task.cpp.obj CMakeFiles/RailwayCBS.dir/lowLevel.cpp.obj CMakeFiles/RailwayCBS.dir/heuristic.cpp.obj CMakeFiles/RailwayCBS.dir/highLevel.cpp.obj | libtinyxml2.a || libtinyxml2.a
-  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG
+  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -O0
   LINK_LIBRARIES = libtinyxml2.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\RailwayCBS.dir
   POST_BUILD = cd .
@@ -120,7 +120,7 @@ build cmake_object_order_depends_target_tinyxml2: phony || CMakeFiles/tinyxml2.d
 
 build CMakeFiles/tinyxml2.dir/tinyxml2.cpp.obj: CXX_COMPILER__tinyxml2_Release C$:/Users/y4624/Desktop/clone/RailwayCBS/tinyxml2.cpp || cmake_object_order_depends_target_tinyxml2
   DEP_FILE = CMakeFiles\tinyxml2.dir\tinyxml2.cpp.obj.d
-  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -fdiagnostics-color=always -std=gnu++11
+  FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -O0 -fdiagnostics-color=always -std=gnu++11
   INCLUDES = -IC:/Boost/boost_1_86_0 -IC:/Users/y4624/Desktop/clone/RailwayCBS/.
   OBJECT_DIR = CMakeFiles\tinyxml2.dir
   OBJECT_FILE_DIR = CMakeFiles\tinyxml2.dir
@@ -134,7 +134,7 @@ build CMakeFiles/tinyxml2.dir/tinyxml2.cpp.obj: CXX_COMPILER__tinyxml2_Release C
 # Link the static library libtinyxml2.a
 
 build libtinyxml2.a: CXX_STATIC_LIBRARY_LINKER__tinyxml2_Release CMakeFiles/tinyxml2.dir/tinyxml2.cpp.obj
-  LANGUAGE_COMPILE_FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG
+  LANGUAGE_COMPILE_FLAGS = -Wall -Wuninitialized -O3 -DNDEBUG -O0
   OBJECT_DIR = CMakeFiles\tinyxml2.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

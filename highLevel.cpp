@@ -279,7 +279,7 @@ bool CBS::checkNewSolution(CTNode& node,int agent0,int agent1){
     solutionPath p2=node.paths[agent1];
 
     std::vector<solutionPath> solution={p1,p2};
-    for(int i=0;i<solution.size();i++){
+    for(size_t i=0;i<solution.size();i++){
         int currentNodeSize =solution[i].nodes.size();
         if(lastTimeStep<currentNodeSize){
             lastTimeStep=currentNodeSize;
@@ -289,13 +289,13 @@ bool CBS::checkNewSolution(CTNode& node,int agent0,int agent1){
 
     for(int i=0;i<lastTimeStep;i++){
 
-        for(int j=0;j<solution.size();j++){
+        for(size_t j=0;j<solution.size();j++){
 
             if(solution[j].nodes.size()==0) continue;
 
             int a=std::min((int)solution[j].nodes.size()-1,i);
 
-            for(int k=0;k<solution.size();k++){
+            for(size_t k=0;k<solution.size();k++){
                 if(j==k) continue;
                 if(solution[k].nodes.size()==0) continue;
                 int b=std::min((int)solution[k].nodes.size()-1,i);
@@ -322,7 +322,7 @@ bool CBS::checkNewSolution(CTNode& node,int agent0,int agent1){
 int CBS::getSIC(std::vector<solutionPath> &solution)
 {
     int cost = 0;
-    for (int i = 0; i < solution.size(); i++)
+    for (size_t i = 0; i < solution.size(); i++)
     {
         cost += solution[i].cost;
     }
@@ -353,7 +353,7 @@ bool CBS::conflictCheck(CTNode &ctnode) {
     std::vector<solutionPath> solution=ctnode.getSolution();
     if(solution.size()==0){return false;}
     int lastTimeStep=0;
-    for(int i=0;i<solution.size();i++){
+    for(size_t i=0;i<solution.size();i++){
         int currentNodeSize =solution[i].nodes.size();
         if(lastTimeStep<currentNodeSize){
             lastTimeStep=currentNodeSize;
@@ -362,16 +362,16 @@ bool CBS::conflictCheck(CTNode &ctnode) {
 
     for(int i=0;i<lastTimeStep;i++){    //时间
 
-        for(int j=0;j<solution.size();j++){   //路径1
+        for(size_t j=0;j<solution.size();j++){   //路径1
             if(solution[j].nodes.size()==0) continue;
             std::vector<solutionNode> pathJ=solution[j].nodes;
-            int a=std::min((int)solution[j].nodes.size()-1,i);
+            size_t a=std::min((int)solution[j].nodes.size()-1,i);
 
-            for(int k=0;k<solution.size();k++) {   //路径2
+            for(size_t k=0;k<solution.size();k++) {   //路径2
                 if(j==k) continue;
                 if(solution[k].nodes.size()==0) continue;
                 std::vector<solutionNode> pathK=solution[k].nodes;
-                int b=std::min((int)solution[k].nodes.size()-1,i);
+                size_t b=std::min((int)solution[k].nodes.size()-1,i);
 
 
 
@@ -399,9 +399,12 @@ bool CBS::conflictCheck(CTNode &ctnode) {
                 //边冲突
                 if(a!=pathJ.size()-1&&b!=pathK.size()-1){
                     if(pathJ[a+1].id==pathK[b].id&&pathJ[a].id==pathK[b+1].id){
-                        int agent1Time=ctnode.findFirstOccurrenceTime(solution[j].nodes,solution[k].nodes[b]);
-                        int agent2Time=ctnode.findFirstOccurrenceTime(solution[k].nodes,solution[k].nodes[b]);
-                        ctnode.addConflict(new Conflict(solution[j].agentID,solution[k].agentID,pathJ[agent1Time],pathK[agent2Time],agent1Time,agent2Time,i));
+                        int agent1Time=ctnode.findFirstOccurrenceTime(solution[j].nodes,solution[j].nodes[a]);
+                        int agent2Time=ctnode.findFirstOccurrenceTime(solution[k].nodes,solution[j].nodes[a]);
+
+                        int node1Time=ctnode.findFirstOccurrenceTime(solution[j].nodes,solution[j].nodes[a+1]);
+                        int node2Time=ctnode.findFirstOccurrenceTime(solution[k].nodes,solution[k].nodes[b+1]);
+                        ctnode.addConflict(new Conflict(solution[j].agentID,solution[k].agentID,pathJ[node1Time],pathK[node2Time],agent1Time,agent2Time,i));
                     }
                 }
 
