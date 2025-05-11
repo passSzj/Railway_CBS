@@ -14,7 +14,7 @@ Path lowLevel::find_path(Agent agent, Map &map,heuristic &h_values,std::vector<C
 
     this->clear();
     this->agent=agent;
-    //make_constraints(cons);
+
     Node start,goal;
     Path path;
     int expanded=0;
@@ -59,10 +59,6 @@ Path lowLevel::pathPlan(Node start, Node goal, Map &map, double agentSpeed,heuri
 
         if(curNode.id==goal.id){
             path.nodes = reconstructPath(curNode);
-//            if(path.nodes.back().g < goal.interval.first){
-//                curNode.g = goal.interval.first;
-//                path.nodes.push_back(curNode);
-//            }
             path.cost = curNode.g;
             path.expanded = int(close.size());
             pathFound++;
@@ -129,15 +125,13 @@ void lowLevel::add_open(Node newNode) {
 
 std::vector<Node> lowLevel::reconstructPath(Node curNode){
     path.nodes.clear();
-    Node* currentNode = &curNode; // 从当前节点开始
+    Node* currentNode = &curNode;
 
-    // 沿着父节点指针回溯到起点
     while (currentNode != nullptr) {
-        path.nodes.push_back(*currentNode);         // 添加当前节点副本
-        currentNode = currentNode->parent;    // 移动到父节点
+        path.nodes.push_back(*currentNode);
+        currentNode = currentNode->parent;
     }
 
-    // 反转路径使顺序变为从起点到终点
     std::reverse(path.nodes.begin(), path.nodes.end());
 
     return expandPathByG(path.nodes);
@@ -152,20 +146,20 @@ std::vector<Node> lowLevel::expandPathByG(const std::vector<Node>& path) {
         const Node& current = path[i];
         const Node& next = path[i + 1];
 
-        // 计算相邻节点的g值差（假设差值必须为整数且非负）
+
         int delta = static_cast<int>(next.g - current.g);
         if (delta < 0) {
-            // 处理错误逻辑（例如抛出异常或返回空路径）
+
             return std::vector<Node>();
         }
-        // 生成逐步递增的g值节点
+
         for (int j = 0; j < delta; ++j) {
-            Node newNode = current; // 复制当前节点属性
-            newNode.g = current.g + j; // 更新g值
+            Node newNode = current;
+            newNode.g = current.g + j;
             detailedPath.push_back(newNode);
         }
     }
-    // 添加最后一个节点（保持原g值）
+
     detailedPath.push_back(path.back());
     return detailedPath;
 }

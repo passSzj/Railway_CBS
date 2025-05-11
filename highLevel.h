@@ -40,9 +40,9 @@ public:
         int time2=conflict->timeStep;
 
 
-//        if(conflict->V == nullptr){
-//            return make_pair(make_pair(time1,solution[j]->Nodes[time1]), make_pair(time2,solution[k]->Nodes[time2]));
-//        }
+       if(conflict->node1.id==-1&&conflict->node2.id==-1){
+            return std::make_pair(std::make_pair(time1,paths[j].nodes[time1]), std::make_pair(time2,paths[k].nodes[time2]));
+       }
 
         if((map->getY(paths[j].nodes[(conflict->time1 == 0) ? 0 : (conflict->time1 - 1)].id)==map->getY(paths[k].nodes[(conflict->time2 == 0) ? 0 : (conflict->time2 - 1)].id))&&
             (map->getY(paths[j].nodes[conflict->time1+1].id)==map->getY(paths[k].nodes[conflict->time2+1].id))){
@@ -165,6 +165,8 @@ public:
     lowLevel planner;
     std::vector<CTNode> tree;
     std::map<int,int> deadlockmap;
+    Solution solution;
+    std::chrono::high_resolution_clock::time_point startTime;
     Solution findSolution(Map &map,Task &task);
     bool initRoot(Map &map, Task &task);
     bool conflictCheck(CTNode &ctnode);
@@ -178,6 +180,9 @@ public:
     bool checkNewSolution(CTNode& node,int agent0,int agent1);
     int getSIC(std::vector<solutionPath> &solution);
     void insertCTNodeByCost(CTNode& newCTNode);
+    Solution setRes(CTNode& ctNode);
+    double crossProduct(solutionNode P1,solutionNode P2,solutionNode P3,solutionNode P4);
+    bool doIntersect(solutionNode A,solutionNode B,solutionNode C,solutionNode D);
 };
 
 

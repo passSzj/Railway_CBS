@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "RailwayCBS",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "RailwayCBS::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-RailwayCBS-Debug-36a1b071ea6f3087cbe3.json",
+					"name" : "RailwayCBS",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "tinyxml2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-tinyxml2-Debug-89769dc5987f6c8e5208.json",
+					"name" : "tinyxml2",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/y4624/Desktop/clone/RailwayCBS/build",
+		"source" : "C:/Users/y4624/Desktop/clone/RailwayCBS"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

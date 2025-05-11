@@ -12,8 +12,8 @@ Solution CBS::findSolution(Map &map, Task &task) {
     }
 
 
-   initRoot(map,task);
-
+    initRoot(map,task);
+    this->startTime= std::chrono::high_resolution_clock::now();
     CTNode node;
     deadlockmap.clear();
     while(!tree.empty()){
@@ -22,8 +22,7 @@ Solution CBS::findSolution(Map &map, Task &task) {
         tree.erase(tree.begin());
         bool valid = conflictCheck(node);
         if(valid){
-            node.getSolution();
-            return Solution(1,2,node.getSolution());
+            return setRes(node);
         }
 
 
@@ -31,10 +30,11 @@ Solution CBS::findSolution(Map &map, Task &task) {
         Conflict conflict =node.getFirstConflict();
 
         bool pathFound;
+
         if(conflict.conflictedAgentsID.second!= -1){
             for(int i=0;i<2;i++){
                 CTNode newCTNode;
-
+                newCTNode.parent=&node;
                 std::pair<std::pair<int,solutionNode>,std::pair<int,solutionNode>> timeAndV=node.checkConflict(&conflict,&map);
 
                 if (timeAndV.first.first != conflict.timeStep) {
@@ -71,9 +71,6 @@ Solution CBS::findSolution(Map &map, Task &task) {
                 }
 
 
-
-
-
                 if(timeAndV.first.first!=conflict.timeStep&&!checkNewSolution(newCTNode,conflict.conflictedAgentsID.first,conflict.conflictedAgentsID.second)){
                     if(timeAndV.first.first>=timeAndV.second.first){
                         for(int u=0;u<=timeAndV.first.first-timeAndV.second.first;u++){
@@ -88,10 +85,10 @@ Solution CBS::findSolution(Map &map, Task &task) {
                                 continue;
                             }
                             if(conflictCheck(newCTNode)){
-                                node.getSolution();
-                                return Solution(1,2,node.getSolution());
+                                return setRes(newCTNode);
                             }
                             if(newCTNode.cost<INT_MAX){
+                                newCTNode.conflicts.clear();
                                 insertCTNodeByCost(newCTNode);
                             }
                         }
@@ -120,9 +117,9 @@ Solution CBS::findSolution(Map &map, Task &task) {
                             }
                             if(newCTNode.cost<INT_MAX){
                                 if(conflictCheck(newCTNode)){
-                                    node.getSolution();
-                                    return Solution(1,2,node.getSolution());
+                                    return setRes(newCTNode);
                                 }
+                                newCTNode.conflicts.clear();
                                 insertCTNodeByCost(newCTNode);
                             }
                         }
@@ -140,9 +137,9 @@ Solution CBS::findSolution(Map &map, Task &task) {
                     }
                     if(newCTNode.cost<INT_MAX){
                         if(conflictCheck(newCTNode)){
-                            node.getSolution();
-                            return Solution(1,2,node.getSolution());
+                            return setRes(newCTNode);
                         }
+                        newCTNode.conflicts.clear();
                         insertCTNodeByCost(newCTNode);
 
                     }
@@ -151,6 +148,8 @@ Solution CBS::findSolution(Map &map, Task &task) {
         }
 
     }
+
+    return Solution({},-1);
 
 }
 
@@ -316,6 +315,8 @@ bool CBS::checkNewSolution(CTNode& node,int agent0,int agent1){
             }
         }
     }
+
+    return false;
 }
 
 
@@ -410,19 +411,19 @@ bool CBS::conflictCheck(CTNode &ctnode) {
 
 
                 //交叉
-                //没写完
-//                if(a!=pathJ.size()-1&&b!=pathK.size()-1){
-//
-//                    if(doIntersect(solution[j]->Nodes[a],solution[j]->Nodes[a+1],solution[k]->Nodes[b],solution[k]->Nodes[b+1])){
-//                        int agent1Time=node.getFirstArriveTime(solution[j]->agentIndex,solution[j]->Nodes[a]);
-//                        int agent2Time=node.getFirstArriveTime(solution[k]->agentIndex,solution[k]->Nodes[b]);
-//                        node.addConflict(new Conflict(_agents[solution[j]->agentIndex],_agents[solution[k]->agentIndex],
-//                                                      nullptr,agent1Time,agent2Time,i));
-//                        valid_solution= false;
-//                        return valid_solution;
-//                    }
-//
-//                }
+                if(a!=solution[j].nodes.size()-1&&b!=solution[k].nodes.size()-1){
+
+                    if(doIntersect(solution[j].nodes[a],solution[j].nodes[a+1],solution[k].nodes[b],solution[k].nodes[b+1])){
+
+                        int agent1Time=ctnode.findFirstOccurrenceTime(solution[j].nodes,solution[j].nodes[a]);
+                        int agent2Time=ctnode.findFirstOccurrenceTime(solution[k].nodes,solution[k].nodes[b]);
+                        ctnode.addConflict(new Conflict(solution[j].agentID,solution[k].agentID,
+                                                        solutionNode(),solutionNode(),agent1Time,agent2Time,i));
+                        valid_solution= false;
+                        return valid_solution;
+                    }
+
+                }
 
 
 
@@ -437,7 +438,20 @@ bool CBS::conflictCheck(CTNode &ctnode) {
     return valid_solution;
 }
 
-
+Solution CBS::setRes(CTNode &ctNode) {
+    std::chrono::high_resolution_clock::time_point end_time = std::chrono::high_resolution_clock::now();
+    std::vector<solutionPath> paths=ctNode.getSolution();
+    double cost=0;
+    for(size_t i=0;i<paths.size();i++){
+        cost+=paths[i].cost;
+    }
+    std::chrono::duration<double> duration =end_time - startTime;
+    solution.time=duration;
+    solution.Cost=cost;
+    solution.paths=paths;
+    solution.found= true;
+    return solution;
+}
 
 
 CTNode CBS::retrieveAndPopCTNodeWithLowestCost(){
@@ -457,4 +471,21 @@ CTNode CBS::retrieveAndPopCTNodeWithLowestCost(){
     // 从树中移除该节点
     tree.erase(minIt);
     return minNode;
+}
+
+
+
+double CBS::crossProduct(solutionNode P1,solutionNode P2,solutionNode P3,solutionNode P4){
+
+    return (map->getX(P2.id)-map->getX(P1.id))*(map->getY(P4.id)-map->getY(P3.id))-(map->getY(P2.id)-map->getY(P1.id))*(map->getX(P4.id)-map->getX(P3.id));
+}
+
+bool CBS::doIntersect(solutionNode A,solutionNode B,solutionNode C,solutionNode D){
+
+    double cross1 = crossProduct(A, B, A, C);
+    double cross2 = crossProduct(A, B, A, D);
+    double cross3 = crossProduct(C, D, C, A);
+    double cross4 = crossProduct(C, D, C, B);
+
+    return (cross1 * cross2 < 0) && (cross3 * cross4 < 0 );
 }

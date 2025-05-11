@@ -1,0 +1,44 @@
+[
+{
+  "directory": "C:/Users/y4624/Desktop/clone/RailwayCBS/build",
+  "command": "C:/TDM-GCC-64/bin/g++.exe  @CMakeFiles/tinyxml2.dir/includes_CXX.rsp  -Wall -Wuninitialized -g -O0 -std=gnu++11 -o CMakeFiles/tinyxml2.dir/tinyxml2.cpp.obj -c C:/Users/y4624/Desktop/clone/RailwayCBS/tinyxml2.cpp",
+  "file": "C:/Users/y4624/Desktop/clone/RailwayCBS/tinyxml2.cpp",
+  "output": "CMakeFiles/tinyxml2.dir/tinyxml2.cpp.obj"
+},
+{
+  "directory": "C:/Users/y4624/Desktop/clone/RailwayCBS/build",
+  "command": "C:/TDM-GCC-64/bin/g++.exe  @CMakeFiles/RailwayCBS.dir/includes_CXX.rsp  -Wall -Wuninitialized -g -O0 -std=gnu++11 -o CMakeFiles/RailwayCBS.dir/main.cpp.obj -c C:/Users/y4624/Desktop/clone/RailwayCBS/main.cpp",
+  "file": "C:/Users/y4624/Desktop/clone/RailwayCBS/main.cpp",
+  "output": "CMakeFiles/RailwayCBS.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/y4624/Desktop/clone/RailwayCBS/build",
+  "command": "C:/TDM-GCC-64/bin/g++.exe  @CMakeFiles/RailwayCBS.dir/includes_CXX.rsp  -Wall -Wuninitialized -g -O0 -std=gnu++11 -o CMakeFiles/RailwayCBS.dir/map.cpp.obj -c C:/Users/y4624/Desktop/clone/RailwayCBS/map.cpp",
+  "file": "C:/Users/y4624/Desktop/clone/RailwayCBS/map.cpp",
+  "output": "CMakeFiles/RailwayCBS.dir/map.cpp.obj"
+},
+{
+  "directory": "C:/Users/y4624/Desktop/clone/RailwayCBS/build",
+  "command": "C:/TDM-GCC-64/bin/g++.exe  @CMakeFiles/RailwayCBS.dir/includes_CXX.rsp  -Wall -Wuninitialized -g -O0 -std=gnu++11 -o CMakeFiles/RailwayCBS.dir/task.cpp.obj -c C:/Users/y4624/Desktop/clone/RailwayCBS/task.cpp",
+  "file": "C:/Users/y4624/Desktop/clone/RailwayCBS/task.cpp",
+  "output": "CMakeFiles/RailwayCBS.dir/task.cpp.obj"
+},
+{
+  "directory": "C:/Users/y4624/Desktop/clone/RailwayCBS/build",
+  "command": "C:/TDM-GCC-64/bin/g++.exe  @CMakeFiles/RailwayCBS.dir/includes_CXX.rsp  -Wall -Wuninitialized -g -O0 -std=gnu++11 -o CMakeFiles/RailwayCBS.dir/lowLevel.cpp.obj -c C:/Users/y4624/Desktop/clone/RailwayCBS/lowLevel.cpp",
+  "file": "C:/Users/y4624/Desktop/clone/RailwayCBS/lowLevel.cpp",
+  "output": "CMakeFiles/RailwayCBS.dir/lowLevel.cpp.obj"
+},
+{
+  "directory": "C:/Users/y4624/Desktop/clone/RailwayCBS/build",
+  "command": "C:/TDM-GCC-64/bin/g++.exe  @CMakeFiles/RailwayCBS.dir/includes_CXX.rsp  -Wall -Wuninitialized -g -O0 -std=gnu++11 -o CMakeFiles/RailwayCBS.dir/heuristic.cpp.obj -c C:/Users/y4624/Desktop/clone/RailwayCBS/heuristic.cpp",
+  "file": "C:/Users/y4624/Desktop/clone/RailwayCBS/heuristic.cpp",
+  "output": "CMakeFiles/RailwayCBS.dir/heuristic.cpp.obj"
+},
+{
+  "directory": "C:/Users/y4624/Desktop/clone/RailwayCBS/build",
+  "command": "C:/TDM-GCC-64/bin/g++.exe  @CMakeFiles/RailwayCBS.dir/includes_CXX.rsp  -Wall -Wuninitialized -g -O0 -std=gnu++11 -o CMakeFiles/RailwayCBS.dir/highLevel.cpp.obj -c C:/Users/y4624/Desktop/clone/RailwayCBS/highLevel.cpp",
+  "file": "C:/Users/y4624/Desktop/clone/RailwayCBS/highLevel.cpp",
+  "output": "CMakeFiles/RailwayCBS.dir/highLevel.cpp.obj"
+}
+]

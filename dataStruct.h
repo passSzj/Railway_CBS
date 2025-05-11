@@ -136,18 +136,15 @@ struct Conflict {
 
 
 struct Solution{
-    bool found;
-    double flowtime;
-    double makespan;
-    double initCost;
-    int high_level_expanded;
-    int low_level_expanded;
-    std::chrono::duration<double> initTime;
+
+
     std::vector<solutionPath> paths;
+    double Cost;
     std::chrono::duration<double> time;
-    Solution(double _flowtime = -1, double _makespan = -1, std::vector<solutionPath> _paths = {})
-            : flowtime(_flowtime), makespan(_makespan), paths(_paths) { initCost = -1; low_level_expanded = 0;}
-    ~Solution() { paths.clear(); found = false;}
+    bool found;
+    Solution(std::vector<solutionPath> _paths = {},double Cost=-1)
+            :paths(_paths),Cost(Cost) {found=false;}
+    ~Solution() { paths.clear(); }
 
 };
 
