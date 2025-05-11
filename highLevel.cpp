@@ -331,9 +331,8 @@ int CBS::getSIC(std::vector<solutionPath> &solution)
     return cost;
 }
 
-// 按 cost 升序插入 newCTNode
+
 void CBS::insertCTNodeByCost(CTNode& newCTNode) {
-    // 使用 std::lower_bound 找到插入位置
     auto it = std::lower_bound(
             tree.begin(),
             tree.end(),
@@ -342,7 +341,6 @@ void CBS::insertCTNodeByCost(CTNode& newCTNode) {
                 return a.cost < b.cost; // 按 cost 升序比较
             }
     );
-    // 在找到的位置插入 newCTNode
     tree.insert(it, newCTNode);
 }
 
@@ -361,14 +359,14 @@ bool CBS::conflictCheck(CTNode &ctnode) {
         }
     }
 
-    for(int i=0;i<lastTimeStep;i++){    //时间
+    for(int i=0;i<lastTimeStep;i++){
 
-        for(size_t j=0;j<solution.size();j++){   //路径1
+        for(size_t j=0;j<solution.size();j++){
             if(solution[j].nodes.size()==0) continue;
             std::vector<solutionNode> pathJ=solution[j].nodes;
             size_t a=std::min((int)solution[j].nodes.size()-1,i);
 
-            for(size_t k=0;k<solution.size();k++) {   //路径2
+            for(size_t k=0;k<solution.size();k++) {
                 if(j==k) continue;
                 if(solution[k].nodes.size()==0) continue;
                 std::vector<solutionNode> pathK=solution[k].nodes;
@@ -456,9 +454,8 @@ Solution CBS::setRes(CTNode &ctNode) {
 
 CTNode CBS::retrieveAndPopCTNodeWithLowestCost(){
     if (tree.empty()) {
-        return CTNode{}; // 返回默认构造的空节点
+        return CTNode{};
     }
-    // 查找最小 cost 节点的迭代器
     auto minIt = std::min_element(
             tree.begin(),
             tree.end(),
@@ -466,9 +463,7 @@ CTNode CBS::retrieveAndPopCTNodeWithLowestCost(){
                 return a.cost < b.cost;
             }
     );
-    // 保存最小节点的副本
     CTNode minNode = *minIt;
-    // 从树中移除该节点
     tree.erase(minIt);
     return minNode;
 }

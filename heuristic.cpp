@@ -27,9 +27,9 @@ void heuristic::count(Map &map, Agent agent) {
             newNode.index=move.index;
             index=move.index;
 
-            newNode.g=curNode.g+ ceil(dist(curNode,newNode)/agent.speed);  /*考虑速度*/
+            newNode.g=curNode.g+ ceil(dist(curNode,newNode)/agent.speed);
 
-            if(h_values[newNode.id][agent.id]<0){   //如果没有更新过节点信息
+            if(h_values[newNode.id][agent.id]<0){
                 auto it = open.get<1>().find(newNode.id);
                 if(it != open.get<1>().end()){
                     if(it->g>newNode.g)
@@ -49,7 +49,7 @@ Node heuristic::find_min(){
     return min;
 }
 
-// 获取特定 index 的最小 g 值节点
+
 Node heuristic::find_min_by_index(int target_index) {
     Node result;
     auto& index_g_index = open.get<by_index_and_g>();
@@ -58,7 +58,7 @@ Node heuristic::find_min_by_index(int target_index) {
     );
     if(range.first != range.second) {
         result = *range.first;
-        // 从 open 中移除该节点
+
         index_g_index.erase(range.first);
         return result;
     }

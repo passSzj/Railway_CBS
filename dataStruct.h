@@ -11,7 +11,7 @@
 using boost::multi_index_container;
 using namespace boost::multi_index;
 
-//探索的具体节点，通过地图索引节点创建
+
 struct Node{
     int index;
     int id;
@@ -25,8 +25,7 @@ struct Node{
 
 
 struct subVertex{
-    //双节点的子节点，地图索引节点
-    int index;   //区分左右子节点   0右 1左
+    int index;
     double x;
     double y;
     std::vector<int> neighbors;
