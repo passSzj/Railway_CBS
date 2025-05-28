@@ -12,14 +12,12 @@ void print_memory_usage();
 int main() {
     Map map;
     Task task;
-    map.getMap("../MapData/Task1.xml");
-    task.getTask("../AgentData/Task1_9Agent.xml");
+    map.getMap("../MapData/Task4.xml");
+    task.getTask("../AgentData/Task4_10Agent.xml");
     task.getXY(map);
 
     CBS cbs;
     Solution res=cbs.findSolution(map,task);
-
-
     std::cout<<"Solution:"<<std::boolalpha<<"\n  Found:"<<res.found<< "\n  Runtime: "
               << res.time.count()  << "\n  Cost: "<<res.Cost << std::endl;
 

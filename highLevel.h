@@ -85,7 +85,14 @@ public:
 
     }
 
-
+    int getFirstTime(int time,std::vector<solutionNode> nodes){
+        for(size_t i=0;i<nodes.size();i++){
+            if(nodes[time].id==nodes[i].id){
+                return i;
+            }
+        }
+        return -1;
+    }
 
     int getConstraintTime(int conflictTime,solutionPath* s1,Map* map){
         int time=conflictTime;
@@ -108,8 +115,11 @@ public:
             }
         }
 
+
+
         if(i>=0){
-            time=i;
+            time=getFirstTime(i,s1->nodes);
+           // time=i;
         }else if(i2!=s1->nodes.size())
             time=i2;
         return time;
@@ -124,6 +134,9 @@ public:
         }
         return -1;
     }
+
+
+
 
     void addConstraints(const std::vector<Constraint*> oldConstraintList,Constraint* newConstraint){
         constraint.clear();
