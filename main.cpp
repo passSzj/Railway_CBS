@@ -12,8 +12,8 @@ void print_memory_usage();
 int main() {
     Map map;
     Task task;
-    map.getMap("../MapData/Task2.xml");
-    task.getTask("../AgentData/Task2_9Agent.xml");
+    map.getMap("../MapData/Task1.xml");
+    task.getTask("../AgentData/Task1_9Agent.xml");
     task.getXY(map);
 
     CBS cbs;
